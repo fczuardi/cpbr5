@@ -39,8 +39,19 @@ twitterStreamClient.on('error', function(error) {
   }catch(e){}
 });
 twitterStreamClient.on('tweet', function(tweet) {
-  var message = tweet.user.screen_name+': '+tweet.text;
-  console.log(message);
+  var formattedTweet = tweet.text;
+  if (tweet.entities.urls){
+    tweet.entities.urls.forEach(function(item, index){
+      if (item.expanded_url){
+        formattedTweet =  formattedTweet.substring(0, item.indices[0]) +
+                          '<a href="'+item.expanded_url+'">'+ item.display_url + '</a>' +
+                          formattedTweet.substring(item.indices[1],formattedTweet.length);
+      }
+    })
+  }
+  var message = '<a href="http://twitter.com/' + tweet.user.screen_name + '">' + tweet.user.screen_name +'</a>: '+ formattedTweet;
+  console.log(tweet.text);
+  console.log(JSON.stringify(tweet.entities));
   try{
   everyone.now.receiveMessage(message);
   }catch(e){}
