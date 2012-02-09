@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>#cpbr5 Stream</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="http://live.cpbr5.com.br/nowjs/now.js"></script>
+<!-- uncomment for localhost -->
+<!-- <script src="/nowjs/now.js"></script> -->
+
+<script>
+$(document).ready(function(){
+  now.receiveMessage = function(message){
+    $("#messages").prepend("<br>" + message);
+  }
+});
+</script>
+</head>
+
+<body>
+<h1>cpbr5 chat? (twitter stream)</h1>
+<p>Aguardando proximo tweet...</p>
+  <div id="messages"></div>
+<small>
+<p>desenvolvido por <a href="http://twitter.com/fczuardi">@fczuardi</a>, powered by <a href="http://nodejs.org">node.js</a>,
+<a href="http://jquery.com/">jQuery</a>, <a href="http://nowjs.com/">now.js</a>, <a href="http://socket.io/">socket.io</a>,
+<a href="https://github.com/jdub/node-twitter">node-twitter</a>, <a href="https://dev.twitter.com/docs/streaming-api">Twitter Streaming API</a>.</p>
+<p>Agradecimento especial <a href="http://www.yodi.me/">a este cara</a>, que mostrou
+o <a href="http://www.yodi.me/blog/2011/09/14/installing-haproxy-in-ubuntu-natty-11-dot-04-ubuntu-on-amazon-ec2/">caminho</a>
+das <a href="http://www.yodi.me/blog/2011/09/20/run-nodejs-and-nowjs-as-sub-domain-in-port-80-using-haproxy-websocket-ubuntu/">pedras</a>
+para superar a limitacao do nginx que nao suporta websockets.</p>
+</small>
+</body>
+</html>
