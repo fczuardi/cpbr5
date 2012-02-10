@@ -1,0 +1,6 @@
+ok - linkify author
+ok - linkify links
+- bonus points se estes filtros vierem na url
+- filtrar fora tweets que contenham palavras ou regexp
+- filtrar tweets contendo nick de uma lista(de gente fazendo promocao) ou hashtags
+- linkify nicknames
